@@ -26,9 +26,9 @@ defineExpose({
 </template>
 <style lang="scss">
   .showbar-wrap{
-    height:320rpx;
+    height:160px;
     .showbar{
-
+      width: 100%; height: 100%;
     }
   }
 </style>

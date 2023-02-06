@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <router-link to="/">go home</router-link>
+ 
   <router-view></router-view>
 </template>
 
