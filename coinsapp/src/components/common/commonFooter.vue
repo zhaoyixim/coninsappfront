@@ -22,9 +22,11 @@ let footlist = reactive({
   <div class="footer-wrap bgbasecolor2 fontbasecolor">
     <div v-for="(item,index) in footlist.list" :key="index" class="font16 footer-body">
       <router-link :to="item.flink">
-        <div :class="{'footerItem':true,'factive':item.factive }">
-            <div :class="[ 'icon','iconfont','font18',item.iconlabel]"></div>
-            <div> {{item.fname}} </div>
+        <div :class="{'footerItem':true}">
+            <div :class="{'factive':item.factive }">
+              <div :class="[ 'icon','iconfont','font18',item.iconlabel]"></div>
+            </div>
+          <div class="font14"> {{item.fname}} </div>
         </div>
       </router-link>
     </div>
@@ -34,6 +36,6 @@ let footlist = reactive({
 <style lang="scss">
 .footer-wrap{ width: 100%;  position:fixed;bottom:0;  display:flex; flex-direction: row; align-items: center;  justify-content: center; height: 50px;
   .footer-body{ text-align: center; width: 100%; display: flex;justify-content:center;}
-  .factive{color:#337ace;}
+  .factive{color:#8457e2;}
 }
 </style>

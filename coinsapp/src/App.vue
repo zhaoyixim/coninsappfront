@@ -12,4 +12,5 @@
 	.font#{$i}{font-size: #{$i}px;}
 }
 body{margin: 0;}
+.container{background-color: #f1f1f1;}
 </style>
