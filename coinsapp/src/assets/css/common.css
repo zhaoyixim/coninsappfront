@@ -2,19 +2,26 @@
 .borderred {
   border: 1px red solid;
 }
+.image-box{height: 100%;width: 100%;}
 .basecolor{ color: #8950FC;}
 .fontbasecolor{color: white;}
 .basefontcolor{color: #8950FC;}
+.fontdark{color: #3F4254 !important;}
+.font666{color: #666666;}
+.fontgrey{color: #7E8299 !important;}
 .bgbasecolor{background-color: #1e1e1e;}
 .bgbasecolor2{background-color: #121826;}
 .bgbasecolor3{background-color: #8950FC !important;}
 .bgbasecolor4{background-color: #EEE5FF !important;}
-
 .bgwhite{background-color: white;}
+.fontcolortips{color: #1BC5BD;}
+.fontbold{font-weight: bold;}
+.colorlightgrey{color: #B5B5C3 !important;}
 /*common source css*/
 a{color: white !important;}
 a{text-decoration: none !important;}
 
+.lineellipsis{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 /*common margin and padding gap*/
 .margintop10{margin-top: 10px;}
 .marginbottom10{margin-bottom: 10px;}
@@ -28,10 +35,6 @@ a{text-decoration: none !important;}
 /*fixed icon */
 .uiconwhite{border: 1px solid white; }
 .uiconbasecolor{ border: 1px solid #8457e2; }
-.uiconfixed{ font-size: 14px;height: 20px; width: 20px; text-align: center; border-radius: 50%; margin-right: 3px; position: relative; top: 1px; }
+.uiconfixed{ height: 20px; width: 20px;  text-align: center; border-radius: 50%; margin-right: 3px;  position: relative; top: 1px;}
+.uiconfixed2{ height: 13px; width: 13px; text-align: center; border-radius: 50%; margin-right: 2px; transform: scale(0.9); margin-top: 1px; }
 
-/*common list data*/
-.list-box{
-  border-radius: .42rem; padding: 10px;
-  display: flex; flex-direction: row;
-}

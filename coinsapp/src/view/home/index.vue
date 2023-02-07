@@ -5,13 +5,14 @@ export default {
 </script>
 <script setup lang="ts">
 import commonFooter from "@/components/common/commonFooter.vue";
+import listItem from "@/components/lists/listItem.vue";
 import { ref } from 'vue';
- 
+
 let showbarTap = ref<boolean | true>()
 showbarTap.value = true
-
 defineExpose({
   showbarTap
+  
 });
 </script>
 
@@ -24,12 +25,12 @@ defineExpose({
       <div class="search-box-wrap margintop10">
         <div class="btn-wrap">
             <div class="vbtn bgbasecolor3 fontbasecolor uicon">
-              <div class="icon iconfont icon-U uiconfixed uiconwhite"></div>  
+              <div class="icon iconfont icon-U font14 uiconfixed uiconwhite"></div>  
               <div>购买USDT</div>
             </div>
 
             <div class="vbtn bgbasecolor4 basecolor uicon">
-              <div class="icon iconfont icon-U uiconfixed uiconbasecolor"></div>  
+              <div class="icon iconfont icon-U font14 uiconfixed uiconbasecolor"></div>  
               <div>出售USDT</div>
             </div>
         </div>
@@ -59,37 +60,7 @@ defineExpose({
       </div>
       <!--list-->
       <div class="list-area-wrap">
-        <div class="list-box bgwhite">
-          <div class="left-area">
-              <div class="title-box-wrap"> 
-                <div class="identify-flg"></div>
-                <div class="title-box">
-                  长期收，保障交易，干净、安全，欢…
-                </div>
-              </div>
-              <div  class="limit-wrap">
-                <div class="limit-words"> 限额 ¥200 - ¥30000 </div>
-                <div class="limit-words-tips">需要同屏截图！ 大额需要流水！</div>
-              </div>
-              <div class="list-bottom-wrap">
-                <div class="avatar-box"></div>
-                <div class="u-cname">大发商行</div>
-                <div class="diamonds-icon"></div>
-                <div class="identyfy-box">
-                  <div class="identify-flg"></div>
-                  <div>5000 USDT</div>
-                </div>
-              </div>
-
-          </div>
-          <div class="right-area font12">
-            <div class="list-btn-box">
-              <div class="icon iconfont icon-U uiconfixed uiconbasecolor"></div>  
-              <div> 出售</div>
-            </div>
-            <div class="list-total-msg">成交4000笔</div>
-          </div>
-        </div>
+        <listItem />
       </div>
       <!--list end-->
     </div>
@@ -122,7 +93,7 @@ defineExpose({
   }
   .search-btn-area{
     .search-btn-box{
-      border-radius: .42rem;padding: 4px 0;box-sizing: border-box;
+      border-radius: .42rem;padding: 6px 0;box-sizing: border-box;
       width: 100%; text-align: center; border: 1px #8950FC solid;background-color: transparent;
     }
   }
