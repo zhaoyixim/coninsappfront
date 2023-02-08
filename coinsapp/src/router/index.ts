@@ -16,7 +16,16 @@ const routes = [
   {
     name:"profile",
     path:'/profile',component:()=>import('../view/home/profile.vue')
+  },
+  {
+    name:"login",
+    path:'/login',component:()=>import('../view/home/login.vue')
+  },
+  {
+    name:"reg",
+    path:'/reg',component:()=>import('../view/home/reg.vue')
   }
+
 ]
 const router = createRouter({
   history:createWebHashHistory(),

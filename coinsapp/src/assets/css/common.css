@@ -17,13 +17,17 @@
 .fontcolortips{color: #1BC5BD;}
 .fontbold{font-weight: bold;}
 .colorlightgrey{color: #B5B5C3 !important;}
+.fontdanger{color: #F64E60 !important;}
 /*common source css*/
 a{color: white !important;}
 a{text-decoration: none !important;}
 
+.disflex{display: flex;}
+
 .lineellipsis{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 /*common margin and padding gap*/
-.margintop10{margin-top: 10px;}
+.margintop10{margin-top: 10px !important;}
+.margintop20{margin-top: 20px !important;}
 .marginbottom10{margin-bottom: 10px;}
 .borderradius10{border-radius: 10px;}
 .borderradius4{border-radius: 4px !important;}
