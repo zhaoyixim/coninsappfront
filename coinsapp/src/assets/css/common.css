@@ -3,7 +3,7 @@
   border: 1px red solid;
 }
 .image-box{height: 100%;width: 100%;}
-.basecolor{ color: #8950FC;}
+.basecolor{ color: #8950FC !important;}
 .fontbasecolor{color: white;}
 .basefontcolor{color: #8950FC;}
 .fontdark{color: #3F4254 !important;}
@@ -19,12 +19,13 @@
 .colorlightgrey{color: #B5B5C3 !important;}
 .fontdanger{color: #F64E60 !important;}
 /*common source css*/
-a{color: white !important;}
+a{color: white;}
 a{text-decoration: none !important;}
 
 .disflex{display: flex;}
 
 .lineellipsis{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.autobreakwords{table-layout: fixed;word-wrap: break-all;word-break: normal;overflow: hidden;}
 /*common margin and padding gap*/
 .margintop10{margin-top: 10px !important;}
 .margintop20{margin-top: 20px !important;}

@@ -1,10 +1,13 @@
 <script setup lang="ts">
   import commonFooter from "@/components/common/commonFooter.vue";
+  import commonHeader from "@/components/common/commonHeader.vue";
 </script>
 
 <template>
-  <div class="container">
-    <div class="profile-title-wrap"> 
+  <div class="container ">
+    <div> <commonHeader ftitle="个人中心" /> </div>
+    <div  class="profile-title-wrap bgwhite"> 
+       <div class="profile-title-bg"></div>
        <div class="title-box bgwhite font13 "> 
             <div class="float-box  fontbasecolor bgbasecolor3 ">
               <div class="float-icon font18 icon iconfont icon-homepage_fill"></div>
@@ -55,6 +58,58 @@
           </div>
         </div>
        </div>
+       <div class="kefu-box-wrap bgbasecolor4 margintop20 disflex"> 
+          <div class="kefu-icon icon iconfont icon-kefufill basefontcolor font35"></div>
+          <div class="kefucontent font14 basefontcolor autobreakwords"> 
+            亲爱的用户 
+            <b>xingjinglong9213</b> 
+            您好，欢迎您注册使用易优，请尽快 
+            <a href="my_renz.html" class="fontbold basecolor">验证注册邮箱&gt;</a> 
+            后开始交易，您可阅读 
+            <a href="news_show.html" class="fontbold basecolor">新用户购买提币指南&gt;</a> 
+            和 
+            <a href="news_show.html" class="fontbold basecolor">商家入驻发布指南&gt;</a>，
+            更多使用帮助请查看 
+            <a href="help.html" class="fontbold basecolor">帮助中心&gt;</a>
+          </div>
+        </div>
+
+        <div class="bgf1 list-menu-wrap">
+           <div class="list-ad-box bgwhite disflex">
+              <div class="ad-left">
+                <div class="icon iconfont icon-jiaoyidui basecolor font42"></div>
+              </div>
+              <div class="ad-right">
+                 <div class="font16 fontdark">交易赚钱</div>
+                 <div class="middel-text font12 fontgrey">发布交易出价，开始买卖USDT赚钱</div>
+                 <div class="font12 disflex">
+                    <div class="bgbasecolor3 fontbasecolor ad-vbtn ad-vbtn-fixed">发布出价</div>
+                    <div class="bgbasecolor3 fontbasecolor ad-vbtn">出价管理</div>
+                 </div>
+              </div>
+           </div>
+           <div class="menu-list-box margintop20 fontdark bgwhite">
+            <div class="list-item disflex menu-border-bottom">
+                <div class="menu-icon font21 icon iconfont icon-Rrl_s_061 "> </div>
+                <div class="right-list-wrap disflex">
+                  <div class="menu-text">安全设置</div>
+                  <div class="menu-icon-right icon iconfont icon-jiantouyou"></div>
+                </div>
+            </div>
+
+            <div class="list-item disflex">
+                <div class="menu-icon font21 icon iconfont icon-Rrl_s_061 "> </div>
+                <div class="right-list-wrap disflex">
+                  <div class="menu-text">安全设置</div>
+                  <div class="menu-icon-right icon iconfont icon-jiantouyou"></div>
+                </div>
+            </div>
+
+           </div>
+
+
+
+        </div>
     </div>
 
 
@@ -63,7 +118,17 @@
   </div>
 </template>
 <style lang="scss" scoped>
-.title-box{position: relative;padding:2px 1.5rem; min-height: 200px; box-sizing:border-box; width: 90%; margin: auto; box-shadow:2px 2px 5px rgba(0,0,0,0.2);}
+.profile-title-wrap{position: relative;z-index: 2;
+.profile-title-bg{box-sizing: border-box; width: 100%; position: absolute;
+  height: 175px; background-image:linear-gradient(-45deg,#9256E4,#8950FC);
+}
+
+}
+.title-box{position: relative; padding:2px 1.5rem; min-height: 200px; box-sizing:border-box; width: 90%; margin: auto; box-shadow:2px 2px 5px rgba(0,0,0,0.2);
+ 
+
+
+}
 .float-box{position: absolute; right: 0; margin-right:25px; display: flex; padding: 6px; border-bottom-left-radius: .42rem;  border-bottom-right-radius: .42rem;
   .float-icon{margin-right: 2px;}
 }
@@ -102,4 +167,36 @@
     .wallet-input{margin-right: 5px;}
   }
 }
+.kefu-box-wrap{
+  align-items: center;
+  box-sizing: border-box; width: 100%;
+  padding: 10px; min-height: 110px;
+ .kefu-icon{padding: 0 10px;}
+ .kefucontent{padding-right: 10px;}
+}
+.list-menu-wrap{
+  padding: 18px; border-radius: 4px;
+  .list-ad-box{border-radius: 4px;padding: 15px; align-items: center;
+    .ad-left{padding:0 16px;}
+    .ad-right{
+      padding-left: 10px;
+      .middel-text{margin: 16px 0;}
+      .ad-vbtn{ padding: 6.6px 9px; border-radius: 8px;}
+      .ad-vbtn-fixed{margin-right: 16px;}
+    }
+  }
+  .menu-list-box{border-radius: 4px; padding: 6px 12px;
+    .list-item{padding: 12px 3px; align-items: center;
+      .menu-icon{padding-right: 13px;}
+      
+      .right-list-wrap{justify-content: space-between; box-sizing: border-box; width: 100%;
+        .menu-text{text-align: left;}
+      }
+    }
+    .menu-border-bottom{border-bottom: 1px solid rgba(0, 0, 0, 0.1);}
+    
+  }
+ 
+}
+
 </style>
