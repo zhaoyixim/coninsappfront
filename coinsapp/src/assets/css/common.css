@@ -1,7 +1,6 @@
 @import './fonts/iconfont.css';
-.borderred {
-  border: 1px red solid;
-}
+.vh100{height: 100vh;}
+.borderred {border: 1px red solid;}
 .image-box{height: 100%;width: 100%;}
 .basecolor{ color: #8950FC !important;}
 .fontbasecolor{color: white;}
@@ -50,16 +49,7 @@ a{text-decoration: none !important;}
 .uiconfixed2{ height: 13px; width: 13px; text-align: center; border-radius: 50%; margin-right: 2px; transform: scale(0.9); margin-top: 1px; }
 
 /*common tap css*/
-.tap-box{box-sizing: border-box;  width: 100%; box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
- 
- align-items: center; justify-content: center;
-}
-.tap-center{
-  align-items: center; justify-content: center;
-}
-.tap-item{
-  border: 1px transparent solid; padding: 8px 0; width: 46px;
-  text-align: center;
-}
-.tap-item2{margin: 0 30px;}
-.item-active{border-bottom: 2px #8950FC solid;}
+
+.tap-box{box-sizing: border-box;  width: 100%; box-shadow: 1px 1px 2px rgba(0,0,0,0.1);align-items: center; justify-content: center;}
+
+

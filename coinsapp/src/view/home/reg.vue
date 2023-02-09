@@ -3,7 +3,7 @@
 
 </script>
 <template>
-  <div class="container">
+  <div class="container vh100">
     <div class="form-box-wrap font14 fontbold fontdark"> 
       <div class="lr-title font22">注册</div>
       <div class="lr-account  lr-input-wrap">

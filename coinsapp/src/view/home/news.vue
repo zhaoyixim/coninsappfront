@@ -48,5 +48,12 @@
     .tips-border{display: inline-block;  margin: 4px 0; margin-right: 6px;   width: 64px; text-align: center; border:1px transparent solid;padding: 0.15rem 0.65rem;border-radius: 0.42rem; }
   }
 }
+
+.tap-center{align-items: center; justify-content: center;}
+.tap-item{ border: 1px transparent solid; padding: 8px 0; width: 46px;text-align: center;}
+.tap-item2{margin: 0 30px;}
+.item-active{border-bottom: 2px #8950FC solid;}
+
+
 .no-order{margin-top: 150px; width: 100%; text-align: center; }
 </style>
