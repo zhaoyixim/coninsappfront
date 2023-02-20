@@ -3,7 +3,7 @@
 
 </script>
 <template>
-  <div class="container">
+  <div class="container vh100">
     <div class="form-box-wrap font14 fontbold fontdark"> 
       <div class="lr-title font22">登陆</div>
       <div class="lr-account  lr-input-wrap">
@@ -19,7 +19,9 @@
       </div>
       <div class="vbtn-box">
         <button class="vbtn  fontbasecolor bgbasecolor3">登陆</button>
-        <button class="vbtn basefontcolor bgbasecolor4 margintop10">注册账号</button>
+        <router-link to="/reg">
+          <button class="vbtn basefontcolor bgbasecolor4 margintop10">注册账号</button>
+        </router-link>
       </div>
     </div>
    

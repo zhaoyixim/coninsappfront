@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.13",
+    "js-md5": "^0.7.3",
     "postcss-extend": "^1.0.5",
     "postcss-import": "^15.1.0",
     "unplugin-vue-components": "^0.23.0",
