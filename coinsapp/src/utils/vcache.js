@@ -11,30 +11,30 @@ const  vcache = {
 	      time: Date.now() / 1000, //记录存储的时间戳
 	      expire: expire //记录过期时间，单位秒
 	    }
-	    uni.setStorageSync(key, JSON.stringify(obj))
+			localStorage.setItem(key,JSON.stringify(obj))	   
 	  },
 	  /**
 	   *
 	   * @param {缓存key} key
 	   */
 	   vget:(key) => {
-	    let val = uni.getStorageSync(key)
+	    let val =  localStorage.getItem(key)
 	    if (!val) {
 	      return null
 	    }
 	    val = JSON.parse(val)
 	    if (val.expire && Date.now() / 1000 - val.time > val.expire) {
-	      uni.removeStorageSync(key)
+				localStorage.removeItem(key);
 	      return null
 	    }
 	    return val.data
 	  },
 	  vdelete:(key) => {
-		   uni.removeStorageSync(key)
+			 localStorage.removeItem(key);
 		   return true
 	  },
 	  vclear:()=>{
-		  uni.clearStorageSync();
+			localStorage.clearItem(key)
 		  return true
 	  }
 }

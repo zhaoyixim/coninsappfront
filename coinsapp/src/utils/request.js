@@ -1,6 +1,6 @@
 import vcache from './vcache.js'
 import commonFunc from './vcommon.js'
-let baseURL='http://api.xunbaoji888.com';
+let baseURL='http://127.0.0.1:8000';
 let dev = false
 if(process.env.NODE_ENV === 'development'){ 
 	dev = true
@@ -11,22 +11,13 @@ let baseOriginURL=baseURL
 
 let header={};
 const showToast = (title) => {
-    uni.showToast({
-        title: title,
-        icon: 'none'
-    })
+  alert(title)
 }
 const showToastError = (title) => {
-    uni.showToast({
-        title: title,
-        icon: 'error'
-    })
+	alert(title)
 }
 const showToastSuccess = (title) => {
-    uni.showToast({
-        title: title,
-        icon: 'success'
-    })
+	alert(title)
 }
 
 /**请求接口
@@ -62,18 +53,7 @@ const http = async (url, data = {}, option = {}) => {
             success: res => { // 服务器成功返回的回调函数
                // if (!hideLoading) uni.hideLoading()
                 if (res.statusCode === 200) {
-					let getrescode = res.data.code
-					if(getrescode == 2022){
-						console.log("asdfadsf",res.data)
-						let beforedata = {
-							url,
-							data
-						}
-					 resolve(commonFunc.quietloginfunc(beforedata))
-					}else {
-						 resolve(res.data)
-					}
-                   
+										resolve(res.data)														
                 } else { // 返回值非 200，强制显示提示信息
                     showToast('[' + res.statusCode + '] 系统处理失败')
                     reject('[' + res.statusCode + '] 系统处理失败')
@@ -107,19 +87,11 @@ const request = {
 	getHeader:()=>{
 		return header
 	},
-	get:(_url,_data)=>{
-		// #ifdef H5
-		if(!dev)
-			request.setBaseUrl("/api")
-		// #endif
+	get:(_url,_data)=>{		
 		let _options = { method : 'GET' }
 		return http(_url,_data,_options)
 	},
-	post:(_url,_data)=>{
-		// #ifdef H5
-		if(!dev)
-			request.setBaseUrl("/api")
-		// #endif
+	post:(_url,_data)=>{	
 		let _options = { method : 'POST' }
 		return http(_url,_data)
 	}

@@ -1,38 +1,43 @@
 <script lang="ts" setup>
 import { reactive } from "@vue/reactivity";
 import validate from "@/utils/validate.js";
+import { getCurrentInstance } from "vue";
+const that = getCurrentInstance()?.proxy;
 let formdata = reactive([
-  {labelname:"登陆账号",labelkey:"username",labelvalue:"", placetxt:"长度在5-16字符之内",required:true, validFunc:"checkusernamelength", checked:false},
-  {labelname:"登陆邮箱",labelkey:"email",labelvalue:"", placetxt:"请输入邮箱",required:true,validFunc:"email", checked:false},
-  {labelname:"登陆密码",labelkey:"password",labelvalue:"", placetxt:"长度在6-16字符之间", required:true,validFunc:"checkpasswordlength", checked:false},
-  {labelname:"推荐码",labelkey:"recode",labelvalue:"", placetxt:"没有可不填",required:false,checked:false}
+  {labelname:"登陆账号",labelkey:"username",labelvalue:"", placetxt:"长度在5-16字符之内",required:true, validFunc:"checkusernamelength", checked:true},
+  {labelname:"登陆邮箱",labelkey:"email",labelvalue:"", placetxt:"请输入邮箱",required:true,validFunc:"email", checked:true},
+  {labelname:"登陆密码",labelkey:"password",labelvalue:"", placetxt:"长度在6-16字符之间", required:true,validFunc:"checkpasswordlength", checked:true},
+  {labelname:"推荐码",labelkey:"recode",labelvalue:"", placetxt:"没有可不填",required:false,checked:true}
 ])
 
-const  submitClick=()=>{
+const  submitClick=async ()=>{
   let checkall = true;
   formdata.forEach(it=>{
      if(it.required){
         if(validate.notEmpty(it.labelvalue)) {
-         
-              if(undefined != it.validFunc){
-                let evalfunc = "validate."+it.validFunc + "("+it.labelvalue + ")";
-             
-                if( eval(evalfunc) ){
-                  console.log("func",evalfunc)
-                  it.checked = true;
-                }else{
-                  console.log("labelvalue",it.labelvalue)
-                  it.checked=false;
-                  checkall = false;
-                }
-              }
-        }else{
-          it.checked=false
-        }
+              if(undefined != it.validFunc && validate[it.validFunc](it.labelvalue)) it.checked = true;
+              else it.checked=false;              
+        }else it.checked=false;
     }
+  });
+
+  let findItem = formdata.find(it=>!it.checked);
+  console.log("getitem",findItem)
+  if(undefined != findItem) return  "验证不通过";
+  //验证通过
+  let senddata:any= {};
+  formdata.forEach(item=>{
+     senddata[item.labelkey] = item.labelvalue;
   })
 
+  let memurl = "/api/member/reg";
+  
+  let meminfo = await that.$request.post(memurl,senddata)
+  console.log(meminfo)
+};
 
+const inputFocus = (item)=>{
+  item.labelvalue = ""
 }
 </script>
 <template>
@@ -41,7 +46,7 @@ const  submitClick=()=>{
       <div class="lr-title font22">注册</div>
       <div class="lr-input-wrap" v-for="(item,index) in  formdata" :key="index">
         <div>{{item.labelname}}</div>
-        <div> <input type="text" v-model="item.labelvalue" :class='{"lr-input":true,"dangerred":item.checked}' :placeholder="item.placetxt"  /> </div>
+        <div> <input type="text" v-model="item.labelvalue" @focus="()=>inputFocus(item)" :class='{"lr-input":true,"dangerred":!item.checked}' :placeholder="item.placetxt"  /> </div>
       </div>
      
       <div class="vbtn-box">
