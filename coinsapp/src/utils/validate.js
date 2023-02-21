@@ -16,7 +16,7 @@ const validate = {
 		return false;
 	},
 	checkpasswordlength:(_val)=>{
-		if(_val.length>=5 && _val.length<=16) return true;
+		if(_val.length>5 && _val.length<=16) return true;
 		return false;
 	}
 }

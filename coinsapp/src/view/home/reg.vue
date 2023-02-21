@@ -1,8 +1,12 @@
 <script lang="ts" setup>
 import { reactive } from "@vue/reactivity";
 import validate from "@/utils/validate.js";
-import { getCurrentInstance } from "vue";
-const that = getCurrentInstance()?.proxy;
+import { ComponentInternalInstance, getCurrentInstance } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter()
+const {proxy} = getCurrentInstance() as ComponentInternalInstance;
+const that = proxy;
 let formdata = reactive([
   {labelname:"登陆账号",labelkey:"username",labelvalue:"", placetxt:"长度在5-16字符之内",required:true, validFunc:"checkusernamelength", checked:true},
   {labelname:"登陆邮箱",labelkey:"email",labelvalue:"", placetxt:"请输入邮箱",required:true,validFunc:"email", checked:true},
@@ -22,7 +26,7 @@ const  submitClick=async ()=>{
   });
 
   let findItem = formdata.find(it=>!it.checked);
-  let gettoken = await that.$commonFunc.setToken();
+  
 
   if(undefined != findItem) return  "验证不通过";
   //验证通过
@@ -35,7 +39,11 @@ const  submitClick=async ()=>{
   
   let meminfo = await that.$request.post({url:memurl,data:senddata})
   console.log(meminfo)
-
+   if(meminfo){
+     router.push({
+      name:'login'
+     })
+   }
 
 };
 

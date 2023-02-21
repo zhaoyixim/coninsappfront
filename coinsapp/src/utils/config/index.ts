@@ -4,7 +4,7 @@ import type { AxiosInstance } from 'axios'
 import type { HYRequestInterceptors, HYRequestConfig } from './type'
 
 // 引入loading组件
-import { showLoadingToast } from 'vant';
+import { showLoadingToast,showToast  } from 'vant';
 // 默认显示loading
 const DEAFULT_LOADING = true
 
@@ -67,13 +67,20 @@ class HYRequest {
         console.log(res)
         // 因为我们需要的就是res.data,所以我们可以在所有请求实例的请求的响应拦截器里面,直接把res.data返回,这样我们就可以直接使用了
          if(res.response != undefined){
+          showToast('请求错误:'+res.response.data.message);
             console.log("请求错误:",res.response.data.message,res.response.data.statusCode)
          }else{
           const data = res.data;
-          if ( undefined != data && (data.status != '201' || data.statusCode != '200')) {
-            console.log('请求失败~, 错误信息')
-          } else {
-            return data
+            if ( undefined != data) {
+              if(data.statusCode && data.statusCode == 201 || data.statusCode == 200) {
+                return data.data;           
+              } else {
+                showToast('请求错误:'+data.message);
+                console.log('请求失败~, 错误信息')
+              }
+                        
+          }else{
+            showToast('请求错误:'+data.message);
           }
          }
         // 判断当HttpErrorCode是200的时候,服务端和客户端一块自定义的错误信息

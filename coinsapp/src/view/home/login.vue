@@ -1,5 +1,12 @@
 <script lang="ts" setup>
-
+import { reactive } from "@vue/reactivity";
+import validate from "@/utils/validate.js";
+import { ComponentInternalInstance, getCurrentInstance } from "vue";
+import { useRouter } from "vue-router";
+//let gettoken = await that.$commonFunc.setToken();
+const router = useRouter()
+const {proxy} = getCurrentInstance() as ComponentInternalInstance;
+const that = proxy;
 
 </script>
 <template>

@@ -14,7 +14,7 @@
     "js-md5": "^0.7.3",
     "postcss-extend": "^1.0.5",
     "postcss-import": "^15.1.0",
-    "unplugin-vue-components": "^0.23.0",
+    "unplugin-vue-components": "^0.24.0",
     "vant": "^4.0.11",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
