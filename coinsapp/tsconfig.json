@@ -17,6 +17,6 @@
     },
     "noEmit": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/utils/request.ts", "src/utils/request.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

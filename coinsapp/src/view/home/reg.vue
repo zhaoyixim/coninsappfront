@@ -16,13 +16,14 @@ const  submitClick=async ()=>{
      if(it.required){
         if(validate.notEmpty(it.labelvalue)) {
               if(undefined != it.validFunc && validate[it.validFunc](it.labelvalue)) it.checked = true;
-              else it.checked=false;              
+              else it.checked=false;
         }else it.checked=false;
     }
   });
 
   let findItem = formdata.find(it=>!it.checked);
-  console.log("getitem",findItem)
+  let gettoken = await that.$commonFunc.setToken();
+
   if(undefined != findItem) return  "验证不通过";
   //验证通过
   let senddata:any= {};
@@ -30,10 +31,12 @@ const  submitClick=async ()=>{
      senddata[item.labelkey] = item.labelvalue;
   })
 
-  let memurl = "/api/member/reg";
+  let memurl = "/api/member/signup";
   
-  let meminfo = await that.$request.post(memurl,senddata)
+  let meminfo = await that.$request.post({url:memurl,data:senddata})
   console.log(meminfo)
+
+
 };
 
 const inputFocus = (item)=>{

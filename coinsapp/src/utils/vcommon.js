@@ -1,5 +1,5 @@
 import md5 from 'js-md5'
-import request from './request.js';
+import request from './request';
 import vcache from './vcache.js';
 /*token 存储有效时间--单位秒*/
 const expiretime = 3600
@@ -14,8 +14,11 @@ const commonFunc = {
 	      }
 	      return pwd.toUpperCase()
 	},
-	setToken:async(appid,secrect,mphone)=>{
+	setToken:async()=>{
 		let timestamp=new Date().getTime()/*毫秒级*/
+		let appid = commonFunc.getRandomString(10);
+		let secrect = commonFunc.getRandomString(16);
+		let mphone = commonFunc.getRandomString(11);
 		let senddata = {
 			appId : appid.toUpperCase(),
 			secrect : secrect,
@@ -30,7 +33,10 @@ const commonFunc = {
 		}
 		let json2 = md5(json1)
 		senddata.authId = md5(md5(json1) + json2)
-		let savedata = await request.post('/auth',senddata)
+		let authurl = '/api/auth/token'
+		let savedata = await request.post({url:authurl,data:senddata})
+		console.log(savedata);
+		return ;
 		if(savedata.code == 0){
 			await vcache.vset("token",savedata.data,expiretime)
 			return true
@@ -58,7 +64,6 @@ const commonFunc = {
 			},1000)
 			return ;
 		}
-		
 		 if(flag || null == gettoken || undefined ==gettoken){
 			 console.log("token过期")
 			 let gettokenfundata = await commonFunc.setToken(Vue.prototype.$adpid,Vue.prototype.$secrect,meminfo.m_phone)		
