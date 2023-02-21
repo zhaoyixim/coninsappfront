@@ -15,7 +15,6 @@ let formdata = reactive([
 ])
 
 const  submitClick=async ()=>{
-  let checkall = true;
   formdata.forEach(it=>{
      if(it.required){
         if(validate.notEmpty(it.labelvalue)) {

@@ -7,6 +7,39 @@ import { useRouter } from "vue-router";
 const router = useRouter()
 const {proxy} = getCurrentInstance() as ComponentInternalInstance;
 const that = proxy;
+let formdata = reactive([
+  {labelname:"登陆账号",labelkey:"username",labelvalue:"", placetxt:"长度在5-16字符之内",required:true, validFunc:"checkusernamelength", checked:true},
+  {labelname:"登陆密码",labelkey:"password",labelvalue:"", placetxt:"长度在6-16字符之间", required:true,validFunc:"checkpasswordlength", checked:true}
+])
+
+formdata.forEach(it=>{
+     if(it.required){
+        if(validate.notEmpty(it.labelvalue)) {
+              if(undefined != it.validFunc && validate[it.validFunc](it.labelvalue)) it.checked = true;
+              else it.checked=false;
+        }else it.checked=false;
+    }
+  });
+
+  let findItem = formdata.find(it=>!it.checked);
+  
+
+  if(undefined != findItem) return  "验证不通过";
+  //验证通过
+  let senddata:any= {};
+  formdata.forEach(item=>{
+     senddata[item.labelkey] = item.labelvalue;
+  })
+
+  //get token
+
+  
+  let memurl = "/api/member/signip";  
+  let meminfo = await that.$request.post({url:memurl,data:senddata})
+  console.log(meminfo)
+   if(meminfo){
+     router.push('/index')
+   }
 
 </script>
 <template>
@@ -36,4 +69,5 @@ const that = proxy;
 </template>
 <style lang="scss">
 @import "@/assets/css/loginAndreg.scss";
+.dangerred{border:1px red solid !important;color:red !important;}
 </style>
