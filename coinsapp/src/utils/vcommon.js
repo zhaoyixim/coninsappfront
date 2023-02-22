@@ -80,20 +80,6 @@ const commonFunc = {
 				icon:"erorr"
 			})
 		}
-	},
-	quietloginfunc:async(beforedata)=>{
-		await commonFunc.tokenCheck(true)
-		let url = '/login'
-		let formdata =  await vcache.vget("formdata")
-		let loginback =	await request.post(url,formdata)
-		if(loginback.code ==0){
-			 /*获得用户信息*/
-			 if(loginback.data.loginId){
-				await vcache.vset("logincode",loginback.data.loginId)
-			 }
-			return  request.post(beforedata.url,beforedata.data) 
-		}
-		return true
 	}
 };
 export default commonFunc;

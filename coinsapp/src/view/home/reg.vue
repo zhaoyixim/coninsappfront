@@ -32,9 +32,9 @@ const  submitClick=async ()=>{
      senddata[item.labelkey] = item.labelvalue;
   })
   senddata.password = md5(senddata.password);
-  let memurl = "/api/member/signup";
+  let memurl = "/api/member/reg";
   let meminfo = await that.$request.post({url:memurl,data:senddata})
-  console.log(meminfo)
+
    if(meminfo){
      router.push({
       name:'login'
