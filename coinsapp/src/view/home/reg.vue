@@ -3,7 +3,7 @@ import { reactive } from "@vue/reactivity";
 import validate from "@/utils/validate.js";
 import { ComponentInternalInstance, getCurrentInstance } from "vue";
 import { useRouter } from "vue-router";
-
+import md5 from 'js-md5';
 const router = useRouter()
 const {proxy} = getCurrentInstance() as ComponentInternalInstance;
 const that = proxy;
@@ -25,17 +25,14 @@ const  submitClick=async ()=>{
   });
 
   let findItem = formdata.find(it=>!it.checked);
-  
-
-  if(undefined != findItem) return  "验证不通过";
+  if(undefined != findItem) {console.log("验证不通过");return ;};
   //验证通过
   let senddata:any= {};
   formdata.forEach(item=>{
      senddata[item.labelkey] = item.labelvalue;
   })
-
+  senddata.password = md5(senddata.password);
   let memurl = "/api/member/signup";
-  
   let meminfo = await that.$request.post({url:memurl,data:senddata})
   console.log(meminfo)
    if(meminfo){

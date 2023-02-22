@@ -71,16 +71,17 @@ class HYRequest {
             console.log("请求错误:",res.response.data.message,res.response.data.statusCode)
          }else{
           const data = res.data;
-            if ( undefined != data) {
+          if ( undefined != data) {
               if(data.statusCode && data.statusCode == 201 || data.statusCode == 200) {
-                return data.data;           
+                return data.data;
               } else {
                 showToast('请求错误:'+data.message);
                 console.log('请求失败~, 错误信息')
               }
                         
           }else{
-            showToast('请求错误:'+data.message);
+            console.log(res)
+            showToast('请求错误:'+res.message);
           }
          }
         // 判断当HttpErrorCode是200的时候,服务端和客户端一块自定义的错误信息

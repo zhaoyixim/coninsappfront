@@ -1,8 +1,11 @@
 import md5 from 'js-md5'
 import request from './request';
 import vcache from './vcache.js';
+import { showToast  } from 'vant';
+import { useRouter } from "vue-router";
 /*token 存储有效时间--单位秒*/
 const expiretime = 3600
+const router = useRouter()
 const commonFunc = {
 	getRandomString:(code=10)=>{
 	      let len = code
@@ -14,7 +17,7 @@ const commonFunc = {
 	      }
 	      return pwd.toUpperCase()
 	},
-	setToken:async()=>{
+	setToken:async(authdata = {})=>{
 		let timestamp=new Date().getTime()/*毫秒级*/
 		let appid = commonFunc.getRandomString(10);
 		let secrect = commonFunc.getRandomString(16);
@@ -34,17 +37,13 @@ const commonFunc = {
 		let json2 = md5(json1)
 		senddata.authId = md5(md5(json1) + json2)
 		let authurl = '/api/auth/token'
-		let savedata = await request.post({url:authurl,data:senddata})
-		console.log(savedata);
-		return ;
-		if(savedata.code == 0){
-			await vcache.vset("token",savedata.data,expiretime)
+		let postdata = {authcode:senddata,...authdata}
+		let accesscode = await request.post({url:authurl,data:postdata})
+		if(accesscode){
+			await vcache.vset("token",accesscode.access_token,expiretime);
 			return true
 		}else{
-			uni.showToast({
-				title:"token获取失败",
-				icon:"error"
-			})
+			showToast("token获取失败");
 			return false
 		}
 	},
@@ -53,20 +52,17 @@ const commonFunc = {
 		let gettoken = await vcache.vget("token")
 		let meminfo = await vcache.vget("meminfo")
 		if(!meminfo){
-			uni.showToast({
-				title:"未登录!",
-				icon:"error"
-			})
+			showToast({title:"未登录!"})
 			setTimeout(function(){
-				uni.navigateTo({
-					url: '/pages/login/index'
-				})
+				router.push('/login')
 			},1000)
 			return ;
 		}
 		 if(flag || null == gettoken || undefined ==gettoken){
 			 console.log("token过期")
+			 
 			 let gettokenfundata = await commonFunc.setToken(Vue.prototype.$adpid,Vue.prototype.$secrect,meminfo.m_phone)		
+			
 			 return gettokenfundata
 		 }
 		 return true
