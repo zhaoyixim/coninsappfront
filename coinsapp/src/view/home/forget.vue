@@ -21,7 +21,7 @@ const  submitClick=async ()=>{
         if(validate.notEmpty(it.labelvalue)) {
               if(undefined != it.validFunc && it.labelkey === 'confirmpasswd'){
                 //重复密码
-                if(validate[it.validFunc](it.labelvalue,formdata[2].labelvalue))  it.checked = true;
+                if(validate.notEmpty(it.labelvalue)&&validate[it.validFunc](it.labelvalue,formdata[2].labelvalue))  it.checked = true;
                  else it.checked=false;
               }else{
                 if(undefined != it.validFunc && validate[it.validFunc](it.labelvalue)) it.checked = true;
@@ -39,6 +39,7 @@ const  submitClick=async ()=>{
      senddata[item.labelkey] = item.labelvalue;
   })
   senddata.password = md5(senddata.password);
+  senddata.confirmpasswd = md5(senddata.confirmpasswd);
   let changeurl = "/api/member/changewd";
   let meminfo = await that.$request.post({url:changeurl,data:senddata})
 
@@ -54,9 +55,9 @@ const  submitClick=async ()=>{
 const inputFocus = (item)=>{
   item.labelvalue = ""
 }
-
-const sendCode = ()=>{
-  if(!validate.notEmpty(formdata[0].labelvalue)){ showToast("请输入邮箱");return ; }
+const sendCode = ()=>{  
+  if(!validate.notEmpty(formdata[0].labelvalue)){ showToast("请输入邮箱");return ;}
+  if(!validate.email(formdata[0].labelvalue)){ showToast("请输入正确邮箱格式");return ;}
   let sendcodeurl:string = '/api/member/sendcode';
   that.$request.post({url:sendcodeurl,data:{email:formdata[0].labelvalue}})
   showToast("已发送，请查收")
@@ -65,7 +66,7 @@ const sendCode = ()=>{
 <template>
   <div class="container vh100">
     <div class="form-box-wrap font14 fontbold fontdark"> 
-      <div class="lr-title font22">注册</div>
+      <div class="lr-title font22">重置密码</div>
       <div class=" fontnormal font16 font666 forgettitletips">输入您的电子邮件获取验证码以重置密码</div>
       <div class="lr-input-wrap" v-for="(item,index) in  formdata" :key="index">
         <template v-if="item.labelkey == 'checkcode' ">
