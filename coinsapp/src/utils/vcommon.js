@@ -60,10 +60,10 @@ const commonFunc = {
 		}
 		 if(flag || null == gettoken || undefined ==gettoken){
 			 console.log("token过期")
-			 
-			 let gettokenfundata = await commonFunc.setToken(Vue.prototype.$adpid,Vue.prototype.$secrect,meminfo.m_phone)		
-			
-			 return gettokenfundata
+			 let senddata = {}
+			 senddata.username = meminfo.username
+			 senddata.password = meminfo.password
+			 return  await commonFunc.setToken(senddata);
 		 }
 		 return true
 	},

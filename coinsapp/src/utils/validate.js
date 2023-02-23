@@ -18,6 +18,9 @@ const validate = {
 	checkpasswordlength:(_val)=>{
 		if(_val.length>5 && _val.length<=16) return true;
 		return false;
+	},
+	checkpasswordagain:(_val,oldval)=>{
+		return _val == oldval;
 	}
 }
 export default validate

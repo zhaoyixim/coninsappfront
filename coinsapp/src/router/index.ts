@@ -26,6 +26,10 @@ const routes = [
     path:'/reg',component:()=>import('../view/home/reg.vue')
   },
   {
+    name:"forget",
+    path:'/forget',component:()=>import('../view/home/forget.vue')
+  },
+  {
     name:"news",
     path:'/news',component:()=>import('../view/home/news.vue')
   }

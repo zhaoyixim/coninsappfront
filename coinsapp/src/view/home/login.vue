@@ -34,7 +34,7 @@ const  submitClick=async ()=>{
       router.push({
         path:"/index"
       })
-    }    
+    }
    }
 
 };
@@ -55,7 +55,9 @@ const inputFocus = (item)=>{
       <div class="lr-passwd  lr-input-wrap">
         <div class="lr-passwd-title-box">
           <div>登陆密码</div>
-          <div class="basefontcolor font13">忘记密码？</div>
+          <router-link to="/forget" >
+            <div class="basefontcolor font13">忘记密码？</div>
+          </router-link>
         </div>
         <div> <input v-model="formdata.password" @focus="()=>inputFocus(1)" type="password" placeholder="请输入密码" :class='{"lr-input":true,"dangerred":!flags.password}' /> </div>
       </div>
@@ -66,7 +68,6 @@ const inputFocus = (item)=>{
         </router-link>
       </div>
     </div>
-   
   </div>
 </template>
 <style lang="scss">
