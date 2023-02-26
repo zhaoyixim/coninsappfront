@@ -10,7 +10,7 @@ const {proxy} = getCurrentInstance() as ComponentInternalInstance;
 const that = proxy;
 let formdata = reactive([
   {labelname:"登陆邮箱",labelkey:"email",labelvalue:"", placetxt:"请输入邮箱",required:true,validFunc:"email", checked:true},
-  {labelname:"验证码",labelkey:"checkcode",labelvalue:"", placetxt:"请输入验证码",required:true,validFunc:"notEmpty",checked:true},
+  {labelname:"验证码",labelkey:"msgcode",labelvalue:"", placetxt:"请输入验证码",required:true,validFunc:"notEmpty",checked:true},
   {labelname:"新密码",labelkey:"password",labelvalue:"", placetxt:"长度在6-16字符之间", required:true,validFunc:"checkpasswordlength", checked:true},
   {labelname:"再次确认",labelkey:"confirmpasswd",labelvalue:"", placetxt:"请再次确定密码", required:true,validFunc:"checkpasswordagain", checked:true},
 ])
@@ -45,9 +45,9 @@ const  submitClick=async ()=>{
 
    if(meminfo){
     showToast("修改成功")
-     router.push({
-      name:'login'
-     })
+   //  router.push({
+    //  name:'login'
+     //})
    }
 
 };
@@ -69,7 +69,7 @@ const sendCode = ()=>{
       <div class="lr-title font22">重置密码</div>
       <div class=" fontnormal font16 font666 forgettitletips">输入您的电子邮件获取验证码以重置密码</div>
       <div class="lr-input-wrap" v-for="(item,index) in  formdata" :key="index">
-        <template v-if="item.labelkey == 'checkcode' ">
+        <template v-if="item.labelkey == 'msgcode' ">
           <div>{{item.labelname}}</div>
           <div class="disflex msgcodebox">
             <input type="text" v-model="item.labelvalue" @focus="()=>inputFocus(item)" :class='{"lr-input":true, "msgcodeinput":true, "dangerred":!item.checked}' :placeholder="item.placetxt"  /> 
