@@ -4,6 +4,7 @@ import validate from "@/utils/validate.js";
 import { ComponentInternalInstance, getCurrentInstance } from "vue";
 import { useRouter } from "vue-router";
 import md5 from 'js-md5';
+import { showToast  } from 'vant';
 const router = useRouter()
 const {proxy} = getCurrentInstance() as ComponentInternalInstance;
 const that = proxy;
@@ -36,6 +37,7 @@ const  submitClick=async ()=>{
   let meminfo = await that.$request.post({url:memurl,data:senddata})
 
    if(meminfo){
+    showToast("注册成功，请登录");
      router.push({
       name:'login'
      })

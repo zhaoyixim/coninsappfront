@@ -45,9 +45,9 @@ const  submitClick=async ()=>{
 
    if(meminfo){
     showToast("修改成功")
-   //  router.push({
-    //  name:'login'
-     //})
+     router.push({
+      name:'login'
+     })
    }
 
 };

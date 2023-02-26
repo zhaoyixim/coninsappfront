@@ -8,18 +8,26 @@ import commonFooter from "@/components/common/commonFooter.vue";
 import listItem from "@/components/lists/listItem.vue";
 import { ref } from 'vue';
 
+
+/**控制轮播图显示*/
 let showbarTap = ref<boolean | true>()
 showbarTap.value = true
 defineExpose({
   showbarTap
-  
 });
 </script>
 
 <template>
   <div class="container">
     <div class="showbar-wrap bgbasecolor3" v-if="showbarTap"> 
-      <div class="showbar"></div>
+      <div class="showbar">
+        <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+          <van-swipe-item>1</van-swipe-item>
+          <van-swipe-item>2</van-swipe-item>
+          <van-swipe-item>3</van-swipe-item>
+          <van-swipe-item>4</van-swipe-item>
+        </van-swipe>      
+      </div>
     </div>
     <div class="main-body-box">
       <div class="search-box-wrap margintop10">
@@ -68,6 +76,17 @@ defineExpose({
   </div>
 </template>
 <style lang="scss">
+
+
+  .my-swipe .van-swipe-item {
+    color: #fff;
+    font-size: 20px;
+    line-height: 160px;
+    text-align: center;
+   
+  }
+
+
   .showbar-wrap{
     height:160px;
     .showbar{
