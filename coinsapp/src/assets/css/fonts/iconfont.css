@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3493485 */
-  src: url('iconfont.woff2?t=1675858494811') format('woff2'),
-       url('iconfont.woff?t=1675858494811') format('woff'),
-       url('iconfont.ttf?t=1675858494811') format('truetype');
+  src: url('iconfont.woff2?t=1678504519465') format('woff2'),
+       url('iconfont.woff?t=1678504519465') format('woff'),
+       url('iconfont.ttf?t=1678504519465') format('truetype');
 }
 
 .iconfont {
@@ -13,12 +13,68 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-paper-full:before {
+  content: "\ea0b";
+}
+
+.icon-sousuo:before {
+  content: "\e651";
+}
+
+.icon-sousuo1:before {
+  content: "\e614";
+}
+
+.icon-sousuo2:before {
+  content: "\e609";
+}
+
+.icon-jinggao_o:before {
+  content: "\eb80";
+}
+
+.icon-jurassic_zan:before {
+  content: "\e696";
+}
+
+.icon-duigou_kuai:before {
+  content: "\ed1d";
+}
+
+.icon-duigoux:before {
+  content: "\ec9e";
+}
+
+.icon-wenhao:before {
+  content: "\e72d";
+}
+
+.icon-cc-star:before {
+  content: "\e69d";
+}
+
+.icon-star1:before {
+  content: "\e839";
+}
+
 .icon-geren:before {
   content: "\e657";
 }
 
+.icon-jiantouxia:before {
+  content: "\ed1e";
+}
+
+.icon-jiantouzuo:before {
+  content: "\ed20";
+}
+
+.icon-jiantoushang:before {
+  content: "\ed21";
+}
+
 .icon-jiantouyou:before {
-  content: "\e62d";
+  content: "\ed22";
 }
 
 .icon-licai:before {

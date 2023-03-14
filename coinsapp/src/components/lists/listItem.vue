@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router';
 
+let router = useRouter()
 defineProps<{ msg: string }>()
 
+
+const tohref = ()=>{
+  router.push("/transdetail")
+
+}
 </script>
 
 <template>
-  <div class="list-box margintop10 bgwhite">
+  <div class="list-box margintop10 bgwhite" @click="()=>tohref()">
           <div class="left-area">
               <div class="title-box-wrap"> 
                 <div class="identify-flg">

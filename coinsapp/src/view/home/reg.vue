@@ -59,7 +59,7 @@ const inputFocus = (item)=>{
       </div>
      
       <div class="vbtn-box">
-        <button @click="()=>submitClick()" class="vbtn fontbasecolor bgbasecolor3">登陆</button>
+        <button @click="()=>submitClick()" class="vbtn fontbasecolor bgbasecolor3">注册</button>
         <router-link to="/login" > 
             <button class="vbtn  basefontcolor bgbasecolor4 margintop10">账号登陆</button>
          </router-link>

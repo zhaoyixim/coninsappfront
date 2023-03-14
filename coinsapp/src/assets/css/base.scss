@@ -1,41 +1,36 @@
 /*common list data*/
-.list-box{
+
+.identyfy-box{
+  border: 1px #1BC5BD solid; border-radius: 4px; padding: 1px 2px;
+  display: flex; flex-direction: row;
+  .identify-flg{
+      margin-top: 2px; padding: 0 2px;
+  }
+}
+
+.list-box{border-radius: .42rem; padding: 10px;display: flex; flex-direction: row; 
   .width260{width: 260px;}
-  border-radius: .42rem; padding: 10px;
-  display: flex; flex-direction: row; 
-  .left-area{
-   flex: 1; 
-    .title-box-wrap{display: flex; 
-        padding-bottom: 3px;
+  .left-area{flex: 1; 
+    .title-box-wrap{display: flex;padding-bottom: 3px;
       .title-box{font-weight: 800;}
       .identify-flg{margin-top:3px; margin-right: 3px;}
     }
     .limit-wrap{
-      .limit-words{padding-bottom: 3px;
-        display: flex; 
+      .limit-words{padding-bottom: 3px;display: flex; 
         .limit-words-tips{display: flex; margin-left: 6px;
           .limit-words-tips-icon{margin-top: 3px;}
         }
       }
     }
-    .list-bottom-wrap{
-      display: flex;  padding-top: 5px; align-items: center;
+    .list-bottom-wrap{display: flex;  padding-top: 5px; align-items: center;
       .fontdot{height: 8px; width: 8px; margin: 0 4px;  border-radius: 50%; color: #1BC5BD; background-color: #1BC5BD;}
       .avatar-box{height: 20px;width: 20px;
          .image-box{border-radius: 50%; }
       }
-      .diamonds-icon{margin: 0 3px;}
-      .identyfy-box{
-        border: 1px #1BC5BD solid; border-radius: 4px; padding: 1px 2px;
-        display: flex; flex-direction: row;
-        .identify-flg{
-            margin-top: 2px; padding: 0 2px;
-        }
-      }
+      .diamonds-icon{margin: 0 3px;}      
     }
   }
-  .right-area{
-    width: 65px;  
+  .right-area{width: 65px;
     .list-btn-box{
       display: flex; flex-direction: row;
       justify-content: center;
@@ -47,3 +42,77 @@
   }
 
 }
+
+/*no order*/
+.no-order{margin-top: 150px; width: 100%; text-align: center; }
+.no-content{width: 100%; text-align: center;}
+/*输入框和按钮*/
+
+.search-box-body{ border-radius: 2px; padding: 10px;
+  .select-area{flex-direction: row; justify-content: space-between;}
+  .select-item{
+    display: inline-block; 
+    padding: .65rem 1rem;padding-left: 33px; padding-right: 33px; line-height: 1.5;border-radius: .42rem;background-color: #F3F6F9; border: 1px #F3F6F9 solid;
+  }
+  .select-item2{
+    display: inline-block; 
+    padding: .65rem 1rem; line-height: 1.5;border-radius: .42rem;background-color: #F3F6F9; border: 1px #F3F6F9 solid;
+  }
+  
+}
+.search-input{
+    border-radius: .42rem;
+    border: 1px #F3F6F9 solid; background-color: #F3F6F9; color: #3F4254;
+    padding: 0.65rem 1rem;box-sizing: border-box; width: 100%;
+}
+
+
+.search-btn-box{
+    border-radius: .42rem;padding: 6px 0;box-sizing: border-box;
+    width: 100%; text-align: center; border: 1px #8950FC solid;background-color: transparent;
+}
+
+.search-btn-box-transparent{ border: 1px solid transparent !important; }
+.btn-box{
+  background-color: #8950FC;   border: 1px transparent solid;    outline: none !important;
+  width: 100%;vertical-align: middle;box-shadow: none;user-select: none;
+  padding: 6px;border-radius:6px;
+}
+.btn-box:disabled{
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+/**footer2 part*/
+.deal-footer{margin-bottom: 60px;text-align: center;}
+.footer-item-wrap{
+  justify-content: center; padding: 5px 100px; padding-bottom: 4px;
+  .footer-item{flex:1;}
+}
+
+/**body css*/
+
+body {
+    background-color: #f1f1f1;  
+    padding: 0px;
+    margin: 0px;
+    font-family: Helvetica Neue, Helvetica, sans-serif;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+.label{justify-content: center;align-items: center;}
+.label-pill {border-radius: none;}
+.label-inline {width: auto;border-radius: 0.42rem;}
+.text-input{width: 100%;padding: 16px;border-radius: 10px; border: 0;}
+/* pagination css fixed*/
+
+.text-align{text-align: center;}
+.text-input{
+  border: 1px transparent solid;
+}
+.text-input:focus{
+  border: 1px #8950FC solid;
+}
+

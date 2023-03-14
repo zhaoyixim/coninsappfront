@@ -1,6 +1,10 @@
 <script setup lang="ts">
   import commonFooter from "@/components/common/commonFooter.vue";
   import commonHeader from "@/components/common/commonHeader.vue";
+  import { useRouter } from "vue-router";
+  const router = useRouter();
+  const recharge = ()=>{router.push({path:"/recharge"})}
+  const towithdraw = ()=>{router.push({path:"/withdraw"})}
 </script>
 
 <template>
@@ -53,8 +57,8 @@
             <div class="wallet-coins fontbold font16">0 USDT</div>
           </div>
           <div class="wallet-btn-box disflex">
-            <div class="wallet-btn wallet-input">充值</div>
-            <div class="wallet-btn">提现</div>
+            <div class="wallet-btn wallet-input" @click="()=>recharge()">充值</div>
+            <div class="wallet-btn"   @click="()=>towithdraw()">提现</div>
           </div>
         </div>
        </div>
@@ -76,10 +80,10 @@
 
         <div class="bgf1 list-menu-wrap">
            <div class="list-ad-box bgwhite disflex">
-              <div class="ad-left">
+              <div class="ad-left-fixed">
                 <div class="icon iconfont icon-jiaoyidui basecolor font42"></div>
               </div>
-              <div class="ad-right">
+              <div class="ad-right-fixed">
                  <div class="font16 fontdark">交易赚钱</div>
                  <div class="middel-text font12 fontgrey">发布交易出价，开始买卖USDT赚钱</div>
                  <div class="font12 disflex">
@@ -118,17 +122,14 @@
   </div>
 </template>
 <style lang="scss" scoped>
+.disblock{display: block;}
 .profile-title-wrap{position: relative;z-index: 2;
 .profile-title-bg{box-sizing: border-box; width: 100%; position: absolute;
   height: 175px; background-image:linear-gradient(-45deg,#9256E4,#8950FC);
 }
 
 }
-.title-box{position: relative; padding:2px 1.5rem; min-height: 200px; box-sizing:border-box; width: 90%; margin: auto; box-shadow:2px 2px 5px rgba(0,0,0,0.2);
- 
-
-
-}
+.title-box{position: relative; padding:2px 1.5rem; padding-top: 0; min-height: 200px; box-sizing:border-box; width: 90%; margin: auto; box-shadow:2px 2px 5px rgba(0,0,0,0.2);}
 .float-box{position: absolute; right: 0; margin-right:25px; display: flex; padding: 6px; border-bottom-left-radius: .42rem;  border-bottom-right-radius: .42rem;
   .float-icon{margin-right: 2px;}
 }
@@ -177,8 +178,8 @@
 .list-menu-wrap{
   padding: 18px; border-radius: 4px;
   .list-ad-box{border-radius: 4px;padding: 15px; align-items: center;
-    .ad-left{padding:0 16px;}
-    .ad-right{
+    .ad-left-fixed{padding:0 16px;}
+    .ad-right-fixed{
       padding-left: 10px;
       .middel-text{margin: 16px 0;}
       .ad-vbtn{ padding: 6.6px 9px; border-radius: 8px;}

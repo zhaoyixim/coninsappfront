@@ -1,7 +1,7 @@
 // service统一出口
-import HYRequest from './config'
-import { BASE_URL, TIME_OUT } from './config/config'
-
+import HYRequest from './config';
+import { BASE_URL, TIME_OUT } from './config/config';
+import vcache from './vcache.js';
 // 创建一个新的请求,并传入参数
 const request = new HYRequest({
   // 传入baseurl
@@ -12,12 +12,17 @@ const request = new HYRequest({
   interceptors: {
     requestInterceptor: (config={}) => {
       // 给当前请求实例所有的请求添加token
-      const token = ''
+      const token:string = vcache.vget("token");
+      //console.log("token",token) 
+      //config.headers.contentType = "application/x-www-form-urlencoded;charset=utf-8";
       if (token) {
+       // config.headers.contentType = "";
+        //config.headers.contentType = "application/json; charset=utf-8";
         // 模板字符串进行拼接
         config.headers.Authorization = `Bearer ${token}`
       }
-
+      //config.headers['Content-Type'] ='application/x-www-form-urlencoded';
+      //config.data = JSON.stringify(config.data)    
       console.log('请求成功的拦截')
       return config
     },

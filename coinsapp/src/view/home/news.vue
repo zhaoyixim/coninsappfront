@@ -54,6 +54,4 @@
 .tap-item2{margin: 0 30px;}
 .item-active{border-bottom: 2px #8950FC solid;}
 
-
-.no-order{margin-top: 150px; width: 100%; text-align: center; }
 </style>

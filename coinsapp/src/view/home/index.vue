@@ -6,12 +6,26 @@ export default {
 <script setup lang="ts">
 import commonFooter from "@/components/common/commonFooter.vue";
 import listItem from "@/components/lists/listItem.vue";
-import { ref } from 'vue';
-
+import { reactive, toRefs,toRef } from "@vue/reactivity";
+import { ref,ComponentInternalInstance, getCurrentInstance } from "vue";
+const {proxy} = getCurrentInstance() as ComponentInternalInstance;
+const that = proxy;
 
 /**控制轮播图显示*/
 let showbarTap = ref<boolean | true>()
 showbarTap.value = true
+let swiperLists = reactive({data:[]});
+let configLists = reactive({data:[]});
+let swiperurl = "api/index/swiper";
+that.$request.get({url:swiperurl}).then((res: never[])=>{
+  swiperLists.data  = res
+});
+let configurl = "api/index/configs";
+that.$request.get({url:configurl}).then((res: never[])=>{
+  configLists.data  = res
+});
+
+console.log('swiperLists',swiperLists)
 defineExpose({
   showbarTap
 });
@@ -22,10 +36,11 @@ defineExpose({
     <div class="showbar-wrap bgbasecolor3" v-if="showbarTap"> 
       <div class="showbar">
         <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-          <van-swipe-item>1</van-swipe-item>
-          <van-swipe-item>2</van-swipe-item>
-          <van-swipe-item>3</van-swipe-item>
-          <van-swipe-item>4</van-swipe-item>
+          <template v-for="(item,index) in swiperLists.data" :key="index">
+            <van-swipe-item>
+              <img :src="item.imgurl" class="image-box" />
+            </van-swipe-item>
+          </template>
         </van-swipe>      
       </div>
     </div>
@@ -43,17 +58,15 @@ defineExpose({
             </div>
         </div>
         <div class="search-box-body margintop10 bgwhite">
-          <div class="select-area "> 
+          <div class="select-area disflex "> 
             <div class="select-box">
                <select class="select-item font16">
-                <option selected="selected">购买USDT</option>
-                <option>出售USDT</option>
+                <option v-for="(it,index) in configLists.data.tags" :key="index"  :selected="it.selected">{{it.cname}}</option>               
                </select>
             </div>
             <div class="select-box">
                <select class="select-item font16">
-                <option selected="selected">微信支付</option>
-                <option>支付宝支付</option>
+                <option v-for="(its,index) in configLists.data.paytags" :key="index"  :selected="its.selected">{{its.cname}}</option>               
                </select>
             </div>
           </div>
@@ -68,7 +81,7 @@ defineExpose({
       </div>
       <!--list-->
       <div class="list-area-wrap">
-        <listItem />
+        <listItem/>
       </div>
       <!--list end-->
     </div>
@@ -81,6 +94,7 @@ defineExpose({
   .my-swipe .van-swipe-item {
     color: #fff;
     font-size: 20px;
+    height: 156px;
     line-height: 160px;
     text-align: center;
    
@@ -96,27 +110,6 @@ defineExpose({
 .main-body-box{padding: 10px;}
 .btn-wrap{display: flex; justify-content: space-between; }
 .vbtn{padding-left: 33px; padding-right: 33px;}
-.search-box-body{ border-radius: 2px; padding: 10px;
-  .select-area{display: flex; flex-direction: row; justify-content: space-between;
-    .select-item{
-      display: inline-block; 
-      padding: .65rem 1rem;padding-left: 33px; padding-right: 33px; line-height: 1.5;border-radius: .42rem;background-color: #F3F6F9; border: 1px #F3F6F9 solid;
-    }
-  }
-  .search-input-area{
-    .search-input{
-      border-radius: .42rem;
-      border: 1px #F3F6F9 solid; background-color: #F3F6F9; color: #3F4254;
-      padding: 0.65rem 1rem;box-sizing: border-box; width: 100%;
-    }
-  }
-  .search-btn-area{
-    .search-btn-box{
-      border-radius: .42rem;padding: 6px 0;box-sizing: border-box;
-      width: 100%; text-align: center; border: 1px #8950FC solid;background-color: transparent;
-    }
-  }
-}
 
 
 

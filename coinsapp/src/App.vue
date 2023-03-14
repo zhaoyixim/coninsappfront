@@ -16,4 +16,7 @@
 body{margin: 0;}
 .container{background-color: #f1f1f1;}
 .bgf1{background-color: #f1f1f1;}
+:root{
+  --van-primary-color:#8950FC !important;
+}
 </style>

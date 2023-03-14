@@ -35,10 +35,11 @@ const commonFunc = {
 			json1 += senddata[key]
 		}
 		let json2 = md5(json1)
-		senddata.authId = md5(md5(json1) + json2)
+		senddata.authId = md5(md5(json1) + json2)	
 		let authurl = '/api/auth/token'
 		let postdata = {authcode:senddata,...authdata}
-		let accesscode = await request.post({url:authurl,data:postdata})
+		let accesscode = await request.post({url:authurl,data:postdata});
+		console.log('accesscode',accesscode);
 		if(accesscode){
 			await vcache.vset("token",accesscode.access_token,expiretime);
 			return true

@@ -10,7 +10,7 @@ import { showToast  } from 'vant';
 const router = useRouter()
 const {proxy} = getCurrentInstance() as ComponentInternalInstance;
 const that = proxy;
-let formdata = reactive({username:"",password:""})
+let formdata = reactive({username:"zhaoyixim",password:"123456"})
 let flags = reactive({username:true,password:true});
 
 const  submitClick=async ()=>{
@@ -23,7 +23,7 @@ const  submitClick=async ()=>{
     return  false
    }else flags.password = true;
    formdata.password = md5(formdata.password)
-   let gettoken =  that.$commonFunc.setToken(formdata)
+   let gettoken = await that.$commonFunc.setToken(formdata)
    if(gettoken){
     //登陆动作
     let loginurl = '/api/member/login'
@@ -31,9 +31,7 @@ const  submitClick=async ()=>{
     if(meminfo){
       vcache.vset("meminfo",meminfo)
       showToast("登录成功");
-      router.push({
-        path:"/index"
-      })
+      router.push({path:"/index"})
     }
    }
 

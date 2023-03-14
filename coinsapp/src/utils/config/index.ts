@@ -2,9 +2,11 @@ import axios from 'axios'
 // 导入axios实例的类型
 import type { AxiosInstance } from 'axios'
 import type { HYRequestInterceptors, HYRequestConfig } from './type'
-
 // 引入loading组件
 import { showLoadingToast,showToast  } from 'vant';
+
+
+
 // 默认显示loading
 const DEAFULT_LOADING = true
 
@@ -40,9 +42,8 @@ class HYRequest {
     // 请求的时候,先添加的拦截器后执行
     // 响应的时候,先添加的拦截器先执行
     this.instance.interceptors.request.use(
-      (config) => {
+      (config) => {        
         console.log('所有的实例都有的拦截器: 请求成功拦截')
-
         // 所有的请求都添加loading
         if (this.showLoading) {
           // 添加loading
@@ -67,16 +68,20 @@ class HYRequest {
         console.log(res)
         // 因为我们需要的就是res.data,所以我们可以在所有请求实例的请求的响应拦截器里面,直接把res.data返回,这样我们就可以直接使用了
          if(res.response != undefined){
-          showToast('请求错误:'+res.response.data.message);
+            showToast('请求错误:'+res.response.data.message);
             console.log("请求错误:",res.response.data.message,res.response.data.statusCode)
+            if(res.response.data.message == "Unauthorized"){
+               window.location.href  = "/#/login"
+           }
          }else{
           const data = res.data;
           if ( undefined != data) {
-              if(data.statusCode && data.statusCode == 201 || data.statusCode == 200) {
-                return data.data;
-              } else {
-                showToast('请求错误:'+data.message);
-                console.log('请求失败~, 错误信息')
+              if(data.code && data.code == 201 || data.code == 200) {
+                return data.result;
+              } else {                           
+                showToast('请求错误:'+data.message);               
+                console.log('请求失败~, 错误信息',data)
+                return res;
               }
                         
           }else{
